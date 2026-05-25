@@ -90,7 +90,7 @@ export const personalInfo: PersonalInfo = {
     },
     {
       label: "LinkedIn",
-      href: "https://linkedin.com/in/piyush/",
+      href: "https://www.linkedin.com/in/piyush-singh-thakur-4ab855231/",
       icon: "linkedin",
     },
     {
