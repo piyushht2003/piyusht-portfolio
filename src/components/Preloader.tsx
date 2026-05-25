@@ -25,12 +25,17 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       if (current >= steps) {
         clearInterval(timer);
         // Small pause at 100 before exit
-        setTimeout(() => setIsVisible(false), 400);
+        setTimeout(() => {
+          setIsVisible(false);
+          // Robust fallback: Call onComplete directly after exit duration (1000ms)
+          // in case React 19's AnimatePresence onExitComplete fails to fire.
+          setTimeout(onComplete, 1000);
+        }, 400);
       }
     }, interval);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [onComplete]);
 
   const handleExitComplete = useCallback(() => {
     onComplete();
