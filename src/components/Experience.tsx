@@ -15,7 +15,7 @@ export default function Experience() {
           {/* Vertical Timeline Line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-[var(--color-border)] transform md:-translate-x-1/2" />
 
-          <div className="flex flex-col gap-20 md:gap-28">
+          <div className="flex flex-col gap-12 md:gap-28">
             {experience.map((item, index) => {
               const isEven = index % 2 === 0;
 
@@ -33,34 +33,34 @@ export default function Experience() {
                     transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as [number, number, number, number] }}
                     className={`w-full md:w-[calc(50%-3rem)] pl-12 md:pl-0 ${isEven ? "md:pr-12 md:text-right" : "md:pl-12"}`}
                   >
-                    <GlowCard className="p-10 md:p-12 h-full">
-                      <div className={`flex flex-col gap-2 mb-6 ${isEven ? "md:items-end" : "items-start"}`}>
-                        <div className="text-[var(--color-text-tertiary)] font-mono text-sm tracking-wider">
+                    <GlowCard className="p-5 sm:p-8 md:p-12 h-full">
+                      <div className={`flex flex-col gap-1 sm:gap-2 mb-4 sm:mb-6 ${isEven ? "md:items-end" : "items-start"}`}>
+                        <div className="text-[var(--color-text-tertiary)] font-mono text-xs sm:text-sm tracking-wider">
                           {item.startDate} — {item.endDate}
                         </div>
-                        <h3 className="text-2xl font-bold font-heading text-[var(--color-text-primary)]">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold font-heading text-[var(--color-text-primary)]">
                           {item.role}
                         </h3>
-                        <div className="text-[var(--color-text-secondary)] font-medium">
+                        <div className="text-[var(--color-text-secondary)] font-medium text-sm sm:text-base">
                           {item.company}{item.location ? ` · ${item.location}` : ""}
                         </div>
                       </div>
 
-                      <ul className={`flex flex-col gap-3 mb-8 text-[var(--color-text-secondary)] text-sm md:text-base ${isEven ? "md:text-right md:items-end" : "text-left items-start"}`}>
+                      <ul className={`flex flex-col gap-2 sm:gap-3 mb-4 sm:mb-8 text-[var(--color-text-secondary)] text-xs sm:text-sm md:text-base ${isEven ? "md:text-right md:items-end" : "text-left items-start"}`}>
                         {item.description.map((bullet, i) => (
                           <li key={i} className="flex gap-2">
-                            {!isEven && <span className="text-[var(--color-text-tertiary)] mt-1 shrink-0">—</span>}
+                            {!isEven && <span className="text-[var(--color-text-tertiary)] mt-1 shrink-0 hidden md:inline">—</span>}
                             <p>{bullet}</p>
                             {isEven && <span className="text-[var(--color-text-tertiary)] mt-1 shrink-0 hidden md:inline">—</span>}
                           </li>
                         ))}
                       </ul>
 
-                      <div className={`flex flex-wrap gap-2 ${isEven ? "md:justify-end" : "justify-start"}`}>
+                      <div className={`flex flex-wrap gap-1.5 sm:gap-2 ${isEven ? "md:justify-end" : "justify-start"}`}>
                         {item.techStack.map((t, i) => (
                           <span
                             key={i}
-                            className="bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-secondary)] px-3 py-1 rounded-full text-xs"
+                            className="bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-secondary)] px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs"
                           >
                             {t}
                           </span>
