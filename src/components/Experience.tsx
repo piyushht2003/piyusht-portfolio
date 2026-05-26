@@ -15,7 +15,7 @@ export default function Experience() {
           {/* Vertical Timeline Line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-[var(--color-border)] transform md:-translate-x-1/2" />
 
-          <div className="flex flex-col gap-16 md:gap-24">
+          <div className="flex flex-col gap-20 md:gap-28">
             {experience.map((item, index) => {
               const isEven = index % 2 === 0;
 
@@ -33,7 +33,7 @@ export default function Experience() {
                     transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as [number, number, number, number] }}
                     className={`w-full md:w-[calc(50%-3rem)] pl-12 md:pl-0 ${isEven ? "md:pr-12 md:text-right" : "md:pl-12"}`}
                   >
-                    <GlowCard className="p-8 h-full">
+                    <GlowCard className="p-10 md:p-12 h-full">
                       <div className={`flex flex-col gap-2 mb-6 ${isEven ? "md:items-end" : "items-start"}`}>
                         <div className="text-[var(--color-text-tertiary)] font-mono text-sm tracking-wider">
                           {item.startDate} — {item.endDate}

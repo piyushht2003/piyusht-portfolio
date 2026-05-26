@@ -13,7 +13,7 @@ export default function Skills() {
       <div className="max-w-7xl mx-auto w-full relative z-10 px-8 md:px-16 lg:px-24 xl:px-32">
         <SectionHeading title="Skills" subtitle="Tech Arsenal" align="left" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16 lg:mt-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-16 lg:mt-24">
           {skills.map((category, categoryIndex) => (
             <motion.div
               key={category.category}
@@ -22,7 +22,7 @@ export default function Skills() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.15 }}
             >
-              <GlowCard className="p-6 md:p-8 h-full">
+              <GlowCard className="p-8 md:p-10 h-full">
                 <div className="mb-8">
                   <h3 className="text-[var(--color-text-secondary)] text-sm uppercase tracking-widest font-bold mb-4">
                     {category.category}

@@ -85,7 +85,7 @@ export default function GlowCard({ children, className = "", disableTilt = false
       />
 
       {/* Content */}
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 h-full flex flex-col [&>*]:flex-shrink-0">{children}</div>
     </motion.div>
   );
 }

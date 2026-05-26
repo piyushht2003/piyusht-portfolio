@@ -42,7 +42,7 @@ const Counter = ({ value, label }: { value: string; label: string }) => {
   }, [isInView, targetNumber, isFloat]);
 
   return (
-    <GlowCard className="p-6 md:p-8 flex flex-col items-center justify-center text-center h-full">
+    <GlowCard className="p-8 md:p-10 flex flex-col items-center justify-center text-center h-full">
       <div ref={ref} className="text-4xl md:text-5xl font-bold font-heading text-[var(--color-text-primary)] mb-2">
         {count}{suffix}
       </div>
@@ -78,7 +78,7 @@ export default function About() {
           </div>
 
           {/* Right Column - Stats Grid */}
-          <div className="grid grid-cols-2 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 gap-6 md:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { FiDownload } from "react-icons/fi";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -156,6 +157,19 @@ export default function Navbar() {
           })}
         </ul>
 
+        {/* Resume button — desktop */}
+        <a
+          href="/resume.pdf"
+          download
+          className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full border border-[var(--color-border-hover)] bg-[rgba(255,255,255,0.04)] text-sm tracking-[0.08em] uppercase transition-all duration-300 hover:bg-[rgba(255,255,255,0.1)] hover:border-[var(--color-accent-active)]"
+          style={{
+            color: "#e5e5e5",
+            fontFamily: "var(--font-body), sans-serif",
+          }}
+        >
+          Resume <FiDownload size={14} />
+        </a>
+
         {/* Hamburger — mobile */}
         <button
           onClick={() => setMobileOpen((v) => !v)}
@@ -229,6 +243,25 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
+              <motion.a
+                href="/resume.pdf"
+                download
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.15 + NAV_LINKS.length * 0.07,
+                  ease: [0.215, 0.61, 0.355, 1] as any,
+                }}
+                className="flex items-center gap-3 mt-4 px-8 py-3 rounded-full border border-[var(--color-border-hover)] bg-[rgba(255,255,255,0.04)] text-2xl font-light tracking-[0.12em] uppercase transition-all duration-300 hover:bg-[rgba(255,255,255,0.1)]"
+                style={{
+                  color: "#e5e5e5",
+                  fontFamily: "var(--font-heading), sans-serif",
+                }}
+              >
+                Resume <FiDownload size={20} />
+              </motion.a>
             </nav>
           </motion.div>
         )}
