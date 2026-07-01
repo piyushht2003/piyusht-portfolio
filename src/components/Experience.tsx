@@ -1,78 +1,122 @@
 "use client";
 
-import { motion } from "motion/react";
-import SectionHeading from "./SectionHeading";
-import GlowCard from "./GlowCard";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { experience } from "@/lib/data";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export default function Experience() {
+  const containerRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const items = gsap.utils.toArray<HTMLElement>(".experience-item");
+
+      items.forEach((item) => {
+        gsap.fromTo(
+          item,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 85%",
+            },
+          }
+        );
+      });
+    },
+    { scope: containerRef }
+  );
+
   return (
-    <section id="experience" className="relative w-full min-h-screen flex flex-col justify-center py-32 md:py-40 bg-[var(--color-bg-secondary)] overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full px-8 md:px-16 lg:px-24 xl:px-32">
-        <SectionHeading title="Experience" subtitle="Career Journey" align="center" />
-
-        <div className="relative mt-24 max-w-5xl mx-auto">
-          {/* Vertical Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-[var(--color-border)] transform md:-translate-x-1/2" />
-
-          <div className="flex flex-col gap-12 md:gap-28">
-            {experience.map((item, index) => {
-              const isEven = index % 2 === 0;
-
-              return (
-                <div key={item.id} className={`relative flex flex-col md:flex-row items-start ${isEven ? "md:flex-row-reverse" : ""} w-full`}>
-
-                  {/* Timeline Dot */}
-                  <div className="absolute left-4 md:left-1/2 top-8 transform -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[var(--color-border-hover)] bg-[var(--color-bg-secondary)] z-10" />
-
-                  {/* Content Box */}
-                  <motion.div
-                    initial={{ opacity: 0, x: isEven ? 50 : -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as [number, number, number, number] }}
-                    className={`w-full md:w-[calc(50%-3rem)] pl-12 md:pl-0 ${isEven ? "md:pr-12 md:text-right" : "md:pl-12"}`}
-                  >
-                    <GlowCard className="p-5 sm:p-8 md:p-12 h-full">
-                      <div className={`flex flex-col gap-1 sm:gap-2 mb-4 sm:mb-6 ${isEven ? "md:items-end" : "items-start"}`}>
-                        <div className="text-[var(--color-text-tertiary)] font-mono text-xs sm:text-sm tracking-wider">
-                          {item.startDate} — {item.endDate}
-                        </div>
-                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold font-heading text-[var(--color-text-primary)]">
-                          {item.role}
-                        </h3>
-                        <div className="text-[var(--color-text-secondary)] font-medium text-sm sm:text-base">
-                          {item.company}{item.location ? ` · ${item.location}` : ""}
-                        </div>
-                      </div>
-
-                      <ul className={`flex flex-col gap-2 sm:gap-3 mb-4 sm:mb-8 text-[var(--color-text-secondary)] text-xs sm:text-sm md:text-base ${isEven ? "md:text-right md:items-end" : "text-left items-start"}`}>
-                        {item.description.map((bullet, i) => (
-                          <li key={i} className="flex gap-2">
-                            {!isEven && <span className="text-[var(--color-text-tertiary)] mt-1 shrink-0 hidden md:inline">—</span>}
-                            <p>{bullet}</p>
-                            {isEven && <span className="text-[var(--color-text-tertiary)] mt-1 shrink-0 hidden md:inline">—</span>}
-                          </li>
-                        ))}
-                      </ul>
-
-                      <div className={`flex flex-wrap gap-1.5 sm:gap-2 ${isEven ? "md:justify-end" : "justify-start"}`}>
-                        {item.techStack.map((t, i) => (
-                          <span
-                            key={i}
-                            className="bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-secondary)] px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </GlowCard>
-                  </motion.div>
-                </div>
-              );
-            })}
-          </div>
+    <section
+      ref={containerRef}
+      id="experience"
+      className="relative w-full py-32 md:py-48 bg-black text-white overflow-hidden border-t border-[var(--color-border)]"
+    >
+      <div className="max-w-[90vw] mx-auto w-full">
+        
+        {/* Editorial Heading */}
+        <div className="mb-24 md:mb-40 flex flex-col items-start px-4 md:px-12">
+          <p className="font-body text-xs md:text-sm uppercase tracking-[0.3em] text-[var(--color-text-secondary)] mb-6">
+            Career Journey
+          </p>
+          <h2 className="font-heading italic text-5xl md:text-7xl lg:text-8xl text-white leading-tight">
+            Work <span className="font-body not-italic font-bold uppercase tracking-tighter">Experience</span>
+          </h2>
         </div>
+
+        {/* Experience List */}
+        <div className="flex flex-col">
+          {experience.map((item, index) => (
+            <div
+              key={item.id}
+              className="experience-item group relative w-full border-t border-[var(--color-border)] py-16 md:py-24 px-4 md:px-12 transition-colors duration-500 hover:bg-[#050505]"
+            >
+              <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-24">
+                
+                {/* Left Column: Dates & Company */}
+                <div className="flex flex-col lg:w-1/3 gap-4">
+                  <span className="font-body text-xs md:text-sm uppercase tracking-[0.2em] text-[var(--color-text-tertiary)]">
+                    {item.startDate} — {item.endDate}
+                  </span>
+                  
+                  <h3 className="font-body font-bold text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[var(--color-text-primary)]">
+                    {item.company}
+                  </h3>
+                  
+                  {item.location && (
+                    <span className="font-heading italic text-lg text-[var(--color-text-secondary)]">
+                      {item.location}
+                    </span>
+                  )}
+                </div>
+
+                {/* Right Column: Role & Details */}
+                <div className="lg:w-2/3 flex flex-col gap-10">
+                  <h4 className="font-heading italic text-4xl md:text-6xl text-[var(--color-text-secondary)] leading-tight group-hover:text-white transition-colors duration-500">
+                    {item.role}
+                  </h4>
+                  
+                  <ul className="flex flex-col gap-4 max-w-2xl">
+                    {item.description.map((bullet, i) => (
+                      <li key={i} className="flex gap-4 items-start">
+                        <span className="text-[var(--color-text-tertiary)] mt-1.5 shrink-0">—</span>
+                        <p className="font-body text-sm md:text-base text-[var(--color-text-secondary)] leading-relaxed">
+                          {bullet}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {item.techStack.map((t, i) => (
+                      <span
+                        key={i}
+                        className="font-body text-[10px] md:text-xs uppercase tracking-[0.1em] text-[var(--color-text-tertiary)] border border-[var(--color-border)] px-3 py-1.5 rounded-full"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          ))}
+          {/* Bottom Border for the last item */}
+          <div className="w-full border-t border-[var(--color-border)]"></div>
+        </div>
+
       </div>
     </section>
   );

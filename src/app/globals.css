@@ -2,11 +2,11 @@
 
 @theme {
   /* ─── Color System ─── */
-  --color-bg-primary: #050505;
-  --color-bg-secondary: #0a0a0a;
-  --color-bg-tertiary: #111111;
-  --color-surface: #161616;
-  --color-surface-elevated: #1a1a1a;
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #050505;
+  --color-bg-tertiary: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-elevated: #161616;
   --color-border: #1a1a1a;
   --color-border-hover: #2a2a2a;
   --color-accent: #3a3a3a;
@@ -18,7 +18,7 @@
   --color-glass-hover: rgba(255, 255, 255, 0.06);
 
   /* ─── Fonts ─── */
-  --font-heading: "Space Grotesk", sans-serif;
+  --font-heading: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
 
   /* ─── Animations ─── */

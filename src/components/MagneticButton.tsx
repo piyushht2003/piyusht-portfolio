@@ -61,11 +61,11 @@ export default function MagneticButton({
         relative cursor-pointer rounded-full
         px-8 py-4
         text-sm font-medium tracking-wide uppercase
-        text-[#e5e5e5]
+        text-[#ece8f4]
         bg-transparent
-        border border-[#222222]
+        border border-[#1e1530]
         transition-all duration-500 ease-out
-        ${isHovered ? "border-[#3a3a3a] bg-[rgba(255,255,255,0.03)] backdrop-blur-xl shadow-[0_0_30px_rgba(255,255,255,0.02)]" : ""}
+        ${isHovered ? "border-[#2e2245] bg-[rgba(120,60,220,0.05)] backdrop-blur-xl shadow-[0_0_30px_rgba(108,63,199,0.08)]" : ""}
         ${className}
       `}
     >

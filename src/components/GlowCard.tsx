@@ -65,9 +65,9 @@ export default function GlowCard({ children, className = "", disableTilt = false
       className={`
         relative overflow-hidden rounded-2xl
         bg-[rgba(255,255,255,0.03)] backdrop-blur-xl
-        border border-[#1a1a1a]
+        border border-[#1e1530]
         transition-[border-color] duration-500 ease-out
-        ${isHovered ? "border-[#2a2a2a]" : ""}
+        ${isHovered ? "border-[#2e2245]" : ""}
         ${className}
       `}
     >
@@ -78,7 +78,7 @@ export default function GlowCard({ children, className = "", disableTilt = false
           opacity: isHovered ? 0.6 : 0,
           background: `radial-gradient(
             600px circle at ${mousePosition.x}% ${mousePosition.y}%,
-            rgba(255, 255, 255, 0.04),
+            rgba(120, 60, 220, 0.06),
             transparent 40%
           )`,
         }}

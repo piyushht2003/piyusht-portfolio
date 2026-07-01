@@ -83,7 +83,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, delay: 0.2, ease: [0.76, 0, 0.24, 1] as any }}
         className="fixed top-5 left-2 right-2 z-40 px-6 md:px-12 py-4 flex items-center justify-between transition-colors duration-500"
         style={{
-          backgroundColor: scrolled ? "rgba(5,5,5,0.8)" : "transparent",
+          backgroundColor: scrolled ? "rgba(5,2,8,0.85)" : "transparent",
           backdropFilter: scrolled ? "blur(24px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(24px)" : "none",
         }}
@@ -207,7 +207,7 @@ export default function Navbar() {
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] as any }}
             className="fixed inset-0 z-35 flex flex-col items-center justify-center"
-            style={{ backgroundColor: "#050505" }}
+            style={{ backgroundColor: "#050208" }}
           >
             <nav className="flex flex-col items-center gap-8">
               {NAV_LINKS.map((link, i) => (

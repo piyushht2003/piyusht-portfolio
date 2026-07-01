@@ -35,7 +35,7 @@ function Icosahedron() {
     <mesh ref={meshRef}>
       <icosahedronGeometry args={[2.6, 1]} />
       <meshBasicMaterial
-        color="#2a2a2a"
+        color="#2e2245"
         wireframe
         transparent
         opacity={0.85}
@@ -68,7 +68,7 @@ function OrbitingTorus() {
       <mesh ref={meshRef} position={[4, 0.5, 0]}>
         <torusKnotGeometry args={[0.55, 0.18, 64, 12, 2, 3]} />
         <meshBasicMaterial
-          color="#1a1a1a"
+          color="#1e1530"
           wireframe
           transparent
           opacity={0.7}

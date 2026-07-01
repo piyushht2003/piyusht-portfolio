@@ -72,14 +72,14 @@ export default function SectionHeading({
       {/* Decorative line */}
       <motion.div
         variants={lineVariants}
-        className="h-[1px] w-12 origin-left bg-[#3a3a3a]"
+        className="h-[1px] w-12 origin-left bg-[#6c3fc7]"
       />
 
       {/* Subtitle */}
       {subtitle && (
         <motion.p
           variants={childVariants}
-          className="font-[family-name:var(--font-body)] text-xs font-medium uppercase tracking-[0.2em] text-[#555555]"
+          className="font-[family-name:var(--font-body)] text-xs font-medium uppercase tracking-[0.2em] text-[#5e5480]"
         >
           {subtitle}
         </motion.p>
@@ -88,7 +88,7 @@ export default function SectionHeading({
       {/* Title */}
       <motion.h2
         variants={childVariants}
-        className="font-[family-name:var(--font-heading)] text-5xl font-bold leading-[0.95] tracking-tight text-[#e5e5e5] md:text-7xl"
+        className="font-[family-name:var(--font-heading)] text-5xl font-bold leading-[0.95] tracking-tight text-[#ece8f4] md:text-7xl"
       >
         {title}
       </motion.h2>

@@ -164,6 +164,140 @@ export const experience: ExperienceEntry[] = [
 
 export const projects: Project[] = [
   {
+    id: "taskflow",
+    name: "TaskFlow",
+    tagline: "Project Management Platform",
+    description:
+      "An open-source, AI-ready project management platform designed to help students, freelancers, and teams manage workflows. Built as a lightweight, highly responsive alternative with a custom retro-tech pixel-art aesthetic.",
+    techStack: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    features: [
+      {
+        title: "CSS Grid Illustrations",
+        description: "Built 8-bit icons entirely out of dynamically mapped CSS grids.",
+      },
+      {
+        title: "Procedural SVG Waves",
+        description: "Engineered a responsive background pixel wave using mathematical SVG generation.",
+      },
+      {
+        title: "Role-Based Workspaces",
+        description: "Tailored environments for individuals, freelancers, and collaborative teams.",
+      },
+      {
+        title: "Real-Time Syncing",
+        description: "Core infrastructure designed to support live project updates and cross-platform sync.",
+      },
+    ],
+    liveUrl: "https://taskflow-one-ivory.vercel.app/",
+    githubUrl: "",
+  },
+  {
+    id: "streampulse",
+    name: "StreamPulse",
+    tagline: "Next-Gen Live-Streaming SaaS",
+    description:
+      "A modern, ultra-low latency live-streaming platform built for real-time creator and audience interaction. Engineered using raw WebRTC protocols and LiveKit to reduce glass-to-glass delay to less than a second.",
+    techStack: [
+      "Next.js",
+      "React",
+      "WebRTC",
+      "Neon PostgreSQL",
+      "Upstash Redis",
+      "NextAuth",
+      "Tailwind CSS",
+    ],
+    features: [
+      {
+        title: "Zero-Latency Video",
+        description: "Robust WebRTC pipeline routing traffic through global edge networks for sub-second video.",
+      },
+      {
+        title: "Interactive Engine",
+        description: "Upstash Redis cache and WebRTC data channels for handling thousands of concurrent live chat messages.",
+      },
+      {
+        title: "Serverless Architecture",
+        description: "Neon Serverless PostgreSQL managed via Prisma ORM for instant cold-starts and infinite scaling.",
+      },
+      {
+        title: "Enterprise Security",
+        description: "NextAuth.js with strict role-based routing for data isolation between public and private spaces.",
+      },
+    ],
+    liveUrl: "https://streampulse-cyan.vercel.app/",
+    githubUrl: "#",
+  },
+  {
+    id: "vrtx-concept",
+    name: "VRTX Concept",
+    tagline: "Premium Agency Portfolio",
+    description:
+      "A high-end, immersive digital portfolio for a creative agency. Features cinematic page loads, buttery-smooth momentum scrolling, and complex typography animations.",
+    techStack: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "Lenis"],
+    features: [
+      {
+        title: "Cinematic Loading",
+        description:
+          "Custom loading screen with a simulated progress bar, glitch effects, and sliding doors.",
+      },
+      {
+        title: "Momentum Scrolling",
+        description:
+          "Replaced native browser scrolling with Lenis for luxurious scrolling physics.",
+      },
+      {
+        title: "Micro-Interactions",
+        description:
+          "Spring-physics-based, staggered word-by-word typography reveals using Framer Motion.",
+      },
+      {
+        title: "Responsive Architecture",
+        description:
+          "Custom, full-screen animated mobile overlay menu with scroll-locking.",
+      },
+    ],
+    liveUrl: "https://vrtxstudio.vercel.app/",
+    githubUrl: "",
+  },
+  {
+    id: "vespera-home",
+    name: "Vespera Home",
+    tagline: "Luxury E-Commerce Experience",
+    description:
+      "A high-end, responsive e-commerce homepage designed to mimic the premium feel of luxury editorial brands through bespoke typography, fluid animations, and a minimalist design system.",
+    techStack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Lucide React",
+    ],
+    features: [
+      {
+        title: "Modern Architecture",
+        description:
+          "Modular frontend using Next.js App Router, separating Server and Client Components.",
+      },
+      {
+        title: "Premium UI/UX",
+        description:
+          "Bespoke design system featuring a warm-neutral palette, glassmorphism, and custom typography.",
+      },
+      {
+        title: "Fluid Interactions",
+        description:
+          "Smooth, scroll-aware sticky navigation and interactive image scaling micro-animations.",
+      },
+      {
+        title: "Complex Layouts",
+        description:
+          "Asymmetric, masonry-style editorial image gallery built with advanced CSS Grid.",
+      },
+    ],
+    liveUrl: "https://vespera-home.vercel.app/",
+    githubUrl: "",
+  },
+  {
     id: "quickstay",
     name: "QuickStay",
     tagline: "Hotel Management SaaS",

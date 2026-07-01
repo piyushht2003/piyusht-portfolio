@@ -7,8 +7,6 @@ interface PreloaderProps {
   onComplete: () => void;
 }
 
-const NAME_CHARS = "PIYUSH SINGH THAKUR".split("");
-
 export default function Preloader({ onComplete }: PreloaderProps) {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
@@ -27,9 +25,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         // Small pause at 100 before exit
         setTimeout(() => {
           setIsVisible(false);
-          // Robust fallback: Call onComplete directly after exit duration (1000ms)
-          // in case React 19's AnimatePresence onExitComplete fails to fire.
-          setTimeout(onComplete, 1000);
+          // Fallback just in case onExitComplete fails
+          setTimeout(onComplete, 1200);
         }, 400);
       }
     }, interval);
@@ -46,87 +43,76 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       {isVisible && (
         <motion.div
           key="preloader"
-          initial={{ clipPath: "inset(0 0 0 0)" }}
-          exit={{ clipPath: "inset(0 0 100% 0)" }}
+          // Cinematic "sliding doors" exit
+          initial={{ y: "0%" }}
+          exit={{ y: "-100%" }}
           transition={{
-            duration: 1,
-            ease: [0.76, 0, 0.24, 1] as any,
+            duration: 1.2,
+            ease: [0.76, 0, 0.24, 1], // premium custom easing
           }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center"
-          style={{ backgroundColor: "#050505" }}
+          className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black overflow-hidden"
         >
-          {/* Name — character stagger */}
-          <div className="flex flex-wrap justify-center gap-x-[2px] md:gap-x-[4px] px-4">
-            {NAME_CHARS.map((char, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.1 + i * 0.04,
-                  ease: [0.215, 0.61, 0.355, 1] as any,
-                }}
-                className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-[0.15em] inline-block"
-                style={{
-                  color: "#e5e5e5",
-                  fontFamily: "var(--font-heading), sans-serif",
-                  minWidth: char === " " ? "0.35em" : undefined,
-                }}
+          
+          {/* Central Typographic Lockup */}
+          <div className="flex flex-col items-center z-10 pointer-events-none">
+            <div className="overflow-hidden pb-[4vw] mb-[-6vw] px-4">
+              <motion.h1
+                initial={{ y: "100%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
+                className="font-heading italic text-[15vw] md:text-[12vw] leading-[0.8] text-white tracking-tight"
               >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
+                Piyush
+              </motion.h1>
+            </div>
+            
+            <div className="overflow-hidden pb-[2vw] mb-[-2vw] mt-4 md:mt-0 px-4 mix-blend-difference z-10 relative">
+              <motion.h1
+                initial={{ y: "-100%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+                className="font-body font-bold uppercase text-[12vw] md:text-[9vw] leading-[0.8] text-white tracking-tighter"
+              >
+                Thakur
+              </motion.h1>
+            </div>
           </div>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: 1.0,
-              ease: [0.215, 0.61, 0.355, 1] as any,
-            }}
-            className="mt-4 md:mt-6 text-sm md:text-base tracking-[0.35em] uppercase"
-            style={{
-              color: "#777777",
-              fontFamily: "var(--font-body), sans-serif",
-            }}
-          >
-            Frontend Engineer
-          </motion.p>
-
-          {/* Counter */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="fixed bottom-8 right-8 md:bottom-12 md:right-12"
-          >
-            <span
-              className="text-6xl md:text-8xl font-light tabular-nums"
-              style={{
-                color: "#555555",
-                fontFamily: "var(--font-mono, 'Geist Mono'), monospace",
-                fontVariantNumeric: "tabular-nums",
-              }}
+          {/* Bottom Loading Bar & Counter */}
+          <div className="absolute bottom-12 md:bottom-16 w-full px-8 md:px-24 flex flex-col md:flex-row items-center justify-between gap-4 z-10">
+            
+            {/* Loading Label */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="font-body text-xs md:text-sm uppercase tracking-[0.3em] text-[var(--color-text-tertiary)]"
             >
-              {String(count).padStart(3, "0")}
-            </span>
-          </motion.div>
+              Loading Experience
+            </motion.div>
 
-          {/* Subtle line animation at bottom */}
-          <motion.div
-            className="fixed bottom-0 left-0 h-[1px]"
-            style={{ backgroundColor: "#2a2a2a" }}
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-            transition={{
-              duration: 2.0,
-              ease: "linear",
-            }}
-          />
+            {/* Center Bar */}
+            <div className="relative w-full md:w-1/3 h-[2px] bg-[#222] overflow-hidden">
+              <motion.div
+                className="absolute top-0 left-0 h-full bg-white"
+                initial={{ width: "0%" }}
+                animate={{ width: `${count}%` }}
+                transition={{ duration: 0.1, ease: "linear" }}
+              />
+            </div>
+
+            {/* Counter */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="font-heading italic text-3xl md:text-5xl text-white"
+            >
+              {String(count).padStart(3, "0")}<span className="text-xl md:text-2xl text-[var(--color-text-secondary)]">%</span>
+            </motion.div>
+
+          </div>
+          
         </motion.div>
       )}
     </AnimatePresence>
