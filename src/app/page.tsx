@@ -20,23 +20,19 @@ export default function Home() {
   useSmoothScroll();
 
   return (
-    <main className="relative bg-[var(--color-bg-primary)] w-full min-h-screen pb-24">
+    <main className="relative bg-transparent w-full min-h-screen pb-24">
       <CustomCursor />
       
-      {loading ? (
-        <Preloader onComplete={() => setLoading(false)} />
-      ) : (
-        <>
-          <ScrollProgress />
-          <Navbar />
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Contact />
-        </>
-      )}
+      {loading && <Preloader onComplete={() => setLoading(false)} />}
+
+      <ScrollProgress />
+      <Navbar />
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <Skills />
+      <Contact />
     </main>
   );
 }

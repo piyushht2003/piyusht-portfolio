@@ -53,6 +53,14 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black overflow-hidden"
         >
           
+          {/* Subtle Purple Tease Glow (Matches Hero for blending) */}
+          <div 
+            className="absolute inset-0 z-0 pointer-events-none opacity-25"
+            style={{
+              background: "radial-gradient(circle at center, #2e2245 0%, transparent 50%)"
+            }}
+          />
+          
           {/* Central Typographic Lockup */}
           <div className="flex flex-col items-center z-10 pointer-events-none">
             <div className="overflow-hidden pb-[4vw] mb-[-6vw] px-4">
@@ -60,18 +68,18 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 initial={{ y: "100%" }}
                 animate={{ y: "0%" }}
                 transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-                className="font-heading italic text-[15vw] md:text-[12vw] leading-[0.8] text-white tracking-tight"
+                className="font-heading italic text-[14vw] md:text-[12vw] leading-[0.8] text-[#e5e5e5] tracking-tight"
               >
                 Piyush
               </motion.h1>
             </div>
             
-            <div className="overflow-hidden pb-[2vw] mb-[-2vw] mt-4 md:mt-0 px-4 mix-blend-difference z-10 relative">
+            <div className="overflow-hidden mt-4 md:mt-0 px-4 mix-blend-difference z-10 relative">
               <motion.h1
                 initial={{ y: "-100%" }}
                 animate={{ y: "0%" }}
                 transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
-                className="font-body font-bold uppercase text-[12vw] md:text-[9vw] leading-[0.8] text-white tracking-tighter"
+                className="font-body font-bold uppercase text-[11vw] md:text-[10vw] leading-[0.8] text-white tracking-tighter"
               >
                 Thakur
               </motion.h1>

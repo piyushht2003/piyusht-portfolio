@@ -41,7 +41,7 @@ export default function Experience() {
     <section
       ref={containerRef}
       id="experience"
-      className="relative w-full py-32 md:py-48 bg-black text-white overflow-hidden border-t border-[var(--color-border)]"
+      className="relative w-full py-32 md:py-48 bg-transparent text-white overflow-hidden border-t border-[var(--color-border)]"
     >
       <div className="max-w-[90vw] mx-auto w-full">
         

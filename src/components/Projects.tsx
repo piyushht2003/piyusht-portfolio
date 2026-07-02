@@ -113,7 +113,7 @@ export default function Projects() {
     <section
       ref={containerRef}
       id="projects"
-      className="relative w-full min-h-screen py-32 md:py-40 bg-black text-white overflow-hidden"
+      className="relative w-full min-h-screen py-32 md:py-40 bg-transparent text-white overflow-hidden"
     >
       {/* Custom Cursor Image Reveal */}
       <div

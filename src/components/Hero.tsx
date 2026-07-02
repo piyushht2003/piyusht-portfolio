@@ -17,7 +17,7 @@ export default function Hero() {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({ delay: 0.5 });
+      const tl = gsap.timeline({ delay: 2.4 });
 
       // Title 1
       const chars1 = title1Ref.current?.querySelectorAll(".char");
@@ -90,7 +90,15 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden bg-black pt-20 pb-10"
     >
-      {/* 3D Background */}
+      {/* Subtle Purple Tease Glow */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-25"
+        style={{
+          background: "radial-gradient(circle at center, #2e2245 0%, transparent 50%)"
+        }}
+      />
+
+      {/* 3D Wireframe Background */}
       <div className="absolute inset-0 z-0 pointer-events-auto opacity-40">
         <Scene3D />
       </div>
